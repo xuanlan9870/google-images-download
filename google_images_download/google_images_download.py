@@ -607,24 +607,26 @@ class googleimagesdownload:
                 extensions = [".jpg", ".jpeg", ".gif", ".png", ".bmp", ".svg", ".webp", ".ico"]
                 # keep everything after the last '/'
                 image_name = str(image_url[(image_url.rfind('/')) + 1:])
-                if format:
-                    if not image_format or image_format != format:
-                        download_status = 'fail'
-                        download_message = "Wrong image format returned. Skipping..."
-                        return_image_name = ''
-                        absolute_path = ''
-                        return download_status, download_message, return_image_name, absolute_path
 
-                if image_format == "" or not image_format or "." + image_format not in extensions:
-                    download_status = 'fail'
-                    download_message = "Invalid or missing image format. Skipping..."
-                    return_image_name = ''
-                    absolute_path = ''
-                    return download_status, download_message, return_image_name, absolute_path
-                elif image_name.lower().find("." + image_format) < 0:
-                    image_name = image_name + "." + image_format
-                else:
-                    image_name = image_name[:image_name.lower().find("." + image_format) + (len(image_format) + 1)]
+                # block no extensions img
+                # if format:
+                #     if not image_format or image_format != format:
+                #         download_status = 'fail'
+                #         download_message = "Wrong image format returned. Skipping..."
+                #         return_image_name = ''
+                #         absolute_path = ''
+                #         return download_status, download_message, return_image_name, absolute_path
+                #
+                # if image_format == "" or not image_format or "." + image_format not in extensions:
+                #     download_status = 'fail'
+                #     download_message = "Invalid or missing image format. Skipping..."
+                #     return_image_name = ''
+                #     absolute_path = ''
+                #     return download_status, download_message, return_image_name, absolute_path
+                # elif image_name.lower().find("." + image_format) < 0:
+                #     image_name = image_name + "." + image_format
+                # else:
+                #     image_name = image_name[:image_name.lower().find("." + image_format) + (len(image_format) + 1)]
 
                 # prefix name in image
                 if prefix:
